@@ -1,0 +1,32 @@
+
+
+
+weather = open("la_weather.csv","r").read()
+weather_data=[]
+rows = weather.split("\n")
+for each in rows:
+    p = each.split(",")
+    weather_data.append(p)
+    
+weather = []
+for each in weather_data:
+    val = each[1]
+    weather.append(val)
+
+count = 0
+for each in weather:
+    count +=1
+print(count)
+new_weather = weather[1:]
+
+weather_types = ["Rain", "Sunny", "Fog", "Fog-Rain", "Thunderstorm", "Type of Weather"]
+weather_type_found = []
+for each in weather_types:
+    found = each in new_weather
+    weather_type_found.append(found)
+    
+    
+    
+ OUTPUT-------------
+ 
+ [True, True, True, True, True, False]

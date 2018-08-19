@@ -1,0 +1,14 @@
+Create a new list of strings called thousand_or_greater that only contains the names shared by 1,000 people or more.
+
+# The last value is ~100 people
+numerical_list[len(numerical_list)-1]
+thousand_or_greater = []
+for item in numerical_list:
+    if (item[1] >= 1000):
+        thousand_or_greater.append(item[0])
+print(thousand_or_greater[0:10]) 
+
+
+OUTPUT-------------
+
+['Casey', 'Riley', 'Jessie', 'Jackie', 'Avery', 'Jaime', 'Peyton', 'Kerry', 'Jody', 'Kendall']

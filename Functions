@@ -1,0 +1,66 @@
+In this mission, we will work with a data set consisting of high-grossing movies, according to the Internet Movie Database(IMDb). IMDb is an online extensive database for films, television programs and video games. Our end goal is to create a dictionary that stores useful statistics from this data set, named movie_metadata. In order to do this, we will:
+
+Clean data to make the information useful to us more easily accessible
+Practice using dictionaries in more complex functions
+Learn how to write our own functions!
+
+
+
+
+
+movies = open("movie_metadata.csv", "r").read()
+rows = movies.split("\n")
+movie_data = []
+for each in rows:
+    st = each.split(",")
+    movie_data.append(st)
+print(movie_data[0:5])
+
+def movie(lisst):
+    ll = []
+    for each in movie_data:
+        st = each[0]
+        ll.append(st)
+    return ll
+
+movie_names = movie(movie_data)
+print(movie_names[0:5])
+
+def index_equals_str(input_lst,index,input_str):
+    if input_lst[index] == input_str:
+        return True
+    else:
+        return False
+def counter(input_lst,header_row = False):
+    num_elt = 0
+    if header_row == True:
+        input_lst = input_lst[1:len(input_lst)]
+    for each in input_lst:
+        num_elt = num_elt + 1
+    return num_elt
+
+def feature_counter(input_lst, index, input_str, header_row = False):
+    num_elt = 0
+    if header_row == True:
+        input_lst = input_lst[1: len(input_lst)]
+    for each in input_lst:
+        if each[index] == input_str:
+            num_elt = num_elt +1
+    return num_elt
+
+num_of_us_movies = feature_counter(movie_data,6,"USA",True)
+
+print(num_of_us_movies)
+
+def summary_statistics(input_lst):
+    dic = {}
+    num_japan_films = feature_counter(movie_data,6,"Japan", True)
+    num_color_films = feature_counter(movie_data,2, "Color", True)
+    num_films_in_english = feature_counter(movie_data,5, "English", True)
+    dic["japan_films"] = num_japan_films
+    dic["color_films"] = num_color_films
+    dic["films_in_english"] = num_films_in_english
+    return dic
+
+summary = summary_statistics(movie_data)
+print(summary)
